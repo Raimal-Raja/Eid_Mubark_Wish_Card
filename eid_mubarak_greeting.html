@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Dancing+Script:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.3) 0%, transparent 50%);
+        }
+
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            font-size: 3rem;
+            animation-delay: 0s;
+        }
+
+        .bg-icon:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            font-size: 2.5rem;
+            animation-delay: 1s;
+        }
+
+        .bg-icon:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            font-size: 2rem;
+            animation-delay: 2s;
+        }
+
+        .bg-icon:nth-child(4) {
+            bottom: 15%;
+            right: 25%;
+            font-size: 3.5rem;
+            animation-delay: 3s;
+        }
+
+        .bg-icon:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            font-size: 2.8rem;
+            animation-delay: 1.5s;
+        }
+
+        .bg-icon:nth-child(6) {
+            top: 70%;
+            right: 10%;
+            font-size: 2.2rem;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .eid-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .eid-subtitle {
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 215, 0, 0.3); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .decorative-elements {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .crescent-moon {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #ffd700;
+            border-radius: 50%;
+            border-right-color: transparent;
+            transform: rotate(-45deg);
+            animation: spin 20s linear infinite;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 2rem;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(-45deg); }
+            to { transform: rotate(315deg); }
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+
+        .celebration-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards, pulse 2s ease-in-out 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .celebration-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .celebration-btn:hover::before {
+            left: 100%;
+        }
+
+        .celebration-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .balloons-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 50px;
+            background: #333;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+        }
+
+        .wish-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .wish-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .wish-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            animation: wishGlow 2s ease-in-out infinite alternate;
+        }
+
+        .wish-message {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .professor-signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ffd700;
+            font-weight: 700;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards, signatureGlow 3s ease-in-out 2s infinite alternate;
+        }
+
+        @keyframes wishGlow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 215, 0, 0.4); }
+        }
+
+        @keyframes signatureGlow {
+            from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.6;
+            animation: floatAround 8s ease-in-out infinite;
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, -60px) rotate(180deg); }
+            75% { transform: translate(-40px, -20px) rotate(270deg); }
+        }
+
+        @media (max-width: 768px) {
+            .eid-title {
+                font-size: 2.5rem;
+            }
+            
+            .eid-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .wish-title {
+                font-size: 2rem;
+            }
+            
+            .wish-message {
+                font-size: 1.1rem;
+            }
+            
+            .professor-signature {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-elements">
+            <div class="bg-icon">🐐</div>
+            <div class="bg-icon">🥩</div>
+            <div class="bg-icon">🔪</div>
+            <div class="bg-icon">🍖</div>
+            <div class="bg-icon">👨‍🍳</div>
+            <div class="bg-icon">🥘</div>
+        </div>
+
+        <div class="main-content">
+            <h1 class="eid-title">Eid Mubarak</h1>
+            <p class="eid-subtitle">To All Our Beloved Friends & Family</p>
+            
+            <div class="decorative-elements">
+                <div class="crescent-moon"></div>
+                <div class="star">✦</div>
+                <div class="star">✧</div>
+                <div class="star">✦</div>
+                <div class="crescent-moon"></div>
+            </div>
+
+            <button class="celebration-btn" onclick="celebrate()">
+                I am waiting for you to link me
+            </button>
+        </div>
+
+        <div class="floating-elements">
+            <div class="floating-element" style="top: 10%; left: 10%; font-size: 2rem;">🌙</div>
+            <div class="floating-element" style="top: 20%; right: 15%; font-size: 1.5rem;">⭐</div>
+            <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 1.8rem;">✨</div>
+            <div class="floating-element" style="bottom: 20%; right: 20%; font-size: 2rem;">🕌</div>
+        </div>
+    </div>
+
+    <div class="balloons-container" id="balloonsContainer"></div>
+
+    <div class="wish-page" id="wishPage">
+        <div class="wish-content">
+            <h2 class="wish-title">🌙 Eid Mubarak! 🌟</h2>
+            <div class="wish-message">
+                May this blessed occasion of Eid bring you joy, peace, and prosperity. 
+                May Allah shower His countless blessings upon you and your family. 
+                May your homes be filled with laughter, your hearts with love, 
+                and your lives with happiness and success.
+                <br><br>
+                Wishing you a very happy and blessed Eid!
+            </div>
+            <div class="professor-signature">
+                ~ Professor Raimal Raja
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function celebrate() {
+            // Create balloons explosion
+            createBalloons();
+            
+            // Create confetti
+            createConfetti();
+            
+            // Show wish page after animation
+            setTimeout(() => {
+                document.getElementById('wishPage').style.display = 'flex';
+            }, 1500);
+        }
+
+        function createBalloons() {
+            const container = document.getElementById('balloonsContainer');
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'];
+            
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                balloon.style.left = Math.random() * 100 + '%';
+                balloon.style.bottom = '-100px';
+                balloon.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(balloon);
+                
+                // Animate balloon
+                setTimeout(() => {
+                    balloon.style.opacity = '1';
+                    balloon.style.transform = `translateY(-${window.innerHeight + 200}px) rotate(${Math.random() * 360}deg)`;
+                    balloon.style.transition = 'all 3s ease-out';
+                }, Math.random() * 500);
+                
+                // Remove balloon after animation
+                setTimeout(() => {
+                    balloon.remove();
+                }, 4000);
+            }
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('balloonsContainer');
+            const colors = ['#ffd93d', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                
+                container.appendChild(confetti);
+                
+                // Animate confetti
+                setTimeout(() => {
+                    confetti.style.opacity = '1';
+                    confetti.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 720}deg)`;
+                    confetti.style.transition = `all ${2 + Math.random() * 3}s ease-out`;
+                }, Math.random() * 300);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Add sparkle effects
+        function createSparkles() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            sparkle.style.color = '#ffd700';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '100';
+            sparkle.style.animation = 'fadeInUp 2s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkles, 3000);
+
+        // Add hover effects to the main title
+        document.querySelector('.eid-title').addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+
+        document.querySelector('.eid-title').addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
