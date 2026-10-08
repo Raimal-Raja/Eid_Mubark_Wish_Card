@@ -2,9 +2,9 @@
 
 Single-page HTML Eid greeting card for viewing and customizing in a browser.
 
-## Repository guide
+## Setup and repository reference
 
-### Contents
+### Project structure
 
 - [eid_mubarak_greeting.html](eid_mubarak_greeting.html)
 
@@ -19,9 +19,15 @@ Open eid_mubarak_greeting.html in a browser and edit its text or styles to custo
 
 ### Configuration and limitations
 
+Open the greeting HTML file in a browser, or serve its directory locally. This static page has no application server or database.
+
 ### Validation
 
-Reviewed on 2026-10-08. Repository structure and documentation were reviewed. No application runtime, training job, or platform-specific build was executed.
+Audit: 2026-10-08. Repository structure, setup instructions and description were reviewed. Syntax checks do not establish full runtime correctness. External APIs, live scraping, GUI interaction, notebook training and production deployment were not comprehensively exercised.
+
+### Repository description
+
+The short GitHub description is provided in [REPOSITORY_DESCRIPTION.md](REPOSITORY_DESCRIPTION.md).
 
 ### Contributions
 
